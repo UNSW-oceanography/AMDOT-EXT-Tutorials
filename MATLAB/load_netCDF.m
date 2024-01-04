@@ -22,16 +22,17 @@ function [data] = load_netCDF(filename,imos_time)
 %% get information
 data.file_info = ncinfo(filename);
 
-%% obtain all variables in file
+%% Obtain all variables in file
 
-for n_var = 1:numel(data.file_info.Variables)
-    % is datatype supported?
-    if isempty(strmatch(data.file_info.Variables(n_var).Datatype,'UNSUPPORTED DATATYPE'))  
-        eval(['data.',data.file_info.Variables(n_var).Name,' = ncread(filename,data.file_info.Variables(n_var).Name);']);
-    else
-        display(['UNSUPPORTED VARIABLE, n = ',num2str(n_var)])
-        continue
-    end
+variables = data.file_info.Variables;
+
+% Loop through each variable and read its data
+for i = 1:length(variables)
+    varName = variables(i).Name;
+    data.(varName) = ncread(filename, varName);
+    
+    % Display variable name and size
+    disp(['Variable: ', varName, ', Dimensions: ', num2str(size(varData))]);
 end
 
 %% convert from IMOS time to MATLAB datenum if required
