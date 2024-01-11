@@ -7,13 +7,14 @@
 %                   load the AMDOT-EXT data products
 % Created: 28 Nov 2022 by Michael Hemming (NSW-IMOS)
 % 
-% using Matlab version 9.8.0.1417392 (R2020a) 
+% using Matlab version 9.8.0.1417392 (R2020a), 23.2.0.2409890 (R2023b) Update 3 
 % 
 % ######################################################################################################################
 % 
 % ####### Please cite the accompanying data set paper if you use the AMDOT-EXT data products #######
 % 
-% # ADD CITATION HERE
+% Hemming, M., Roughan, M., and Schaeffer, A.: Exploring Multi-decadal Time Series of Temperature Extremes in Australian Coastal Waters, 
+% Earth Syst. Sci. Data Discuss. (2024)
 % 
 % ######################################################################################################################
 % 
