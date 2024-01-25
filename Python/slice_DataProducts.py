@@ -2,19 +2,25 @@
 
 ####################################################################
 
-
 # Script: slice_DataProducts.py
-# Description: Tutorial on how to load the AMDOT-EXT data products
-#              and slice data using event characteristics
+# Description: Tutorial on how to load the AMDOT-EXT data products and slice data using event characteristics
 # Created: 28 Nov 2022 by Michael Hemming (NSW-IMOS)
 
 # using Python version 3.9, Spyder (managed using Anaconda)
 
 ######################################################################################################################
 
-####### Please cite the accompanying data set paper if you use the AMDOT-EXT data products #######
-
-# ADD CITATION HERE
+# % ####### Any and all use of the AMDOT-EXT data products or accompanying event summary CSV files described here must include ####### 
+# %
+# % – a citation to the data paper: "Exploring Multi-decadal Time Series of Temperature Extremes in Australian Coastal Waters: Hemming et al., (2024). 
+# %    Earth System Science Data. https://doi.org/10.5194/essd-2023-252."
+# %
+# % – a reference to the data citation as written in the NetCDF file attributes and as follows: Hemming, MP. et al. (2023) "Australian Multi-decadal Ocean Time Series 
+# %    EXTreme (AMDOT-EXT) Data Products", Australian Ocean Data Network, https://doi.org/10.26198/wbc7-8h24."
+# %
+# % – the following acknowledgement statement: Data were sourced from Australia’s Integrated Marine Observing System280
+# % (IMOS) - IMOS is enabled by the National Collaborative Research Infrastructure Strategy (NCRIS).
+# %
 
 ######################################################################################################################
 
@@ -26,28 +32,25 @@
 import xarray as xr
 import numpy as np
 
-# If you do not currently have xarray installed, please use either
-# 'conda install xarray' or 'pip install xarray'
+# If you do not currently have these packages installed, please use either
+# 'conda install <package>' or 'pip install <package>'
 
 # %% -----------------------------------------------------------
 # Download the data products
 
-# The netCDF files are available for download here:
-# http://thredds.aodn.org.au/thredds/catalog/UNSW/UPDATE_HERE_WHEN_READY/catalog.html
-#
-# However, here we will load the file directly using OPeNDAP.
-#
-# For more information on the files and methodology, please see CITATION
+# % The netCDF files are available for download here:
+# % https://thredds.aodn.org.au/thredds/catalog/UNSW/NRS_extremes/catalog.html
+
+# % However, in this tutorial we will load the file directly using OPeNDAP.
 
 # %% -----------------------------------------------------------
 # load the data products
 
 # We will use the Port Hacking data product in this example
-
-# filename = 'http://thredds.aodn.org.au/thredds/catalog/UNSW/UPDATE_HERE_WHEN_READY/catalog.html'
-filename = ('C:\\Users\\mphem\\OneDrive - UNSW\\Work\\Temperature_extremes\\Temperature_extremes\\Data\\' + 
-            'Finalised_data\\PH100_TEMP_EXTREMES_1953-2022_v1.nc')
-
+filename = ('C:\\Users\\mphem\\OneDrive - UNSW\\Work\\Temperature_extremes\\Temperature_extremes\\Data\\Finalised_data\\' + 
+            'V1\\FilesAODNupload\\ManuscriptVersion_2022\\' + 'PH100_TEMP_EXTREMES_1953-2022_v1.nc')
+# filename = ('https://thredds.aodn.org.au/thredds/dodsC/UNSW/NRS_extremes/Temperature_DataProducts/' + 
+#             'PH100/PH100_TEMP_EXTREMES_1953-2022_v1.nc')
 data = xr.open_dataset(filename)
 
 # %% -----------------------------------------------------------
@@ -75,7 +78,7 @@ data22mMHWStrong = data22m.where(data22mMHW.MHW_EVENT_CAT==2,drop=True)
 IntMeanCumulative = np.round(data22mMHWStrong.MHW_EVENT_INTENSITY_CUMULATIVE.mean(),1)
 IntMeanMax = np.round(data22mMHWStrong.MHW_EVENT_INTENSITY_MAX.mean(),1)
 IntMean = np.round(data22mMHWStrong.MHW_EVENT_INTENSITY_MEAN.mean(),1)
-DurMean = np.int32(data22mMHWStrong.MHW_EVENT_DURATION.mean()/np.timedelta64(1, 'D'))
+DurMean = np.int32(data22mMHWStrong.MHW_EVENT_DURATION.mean())
 
 print('PH100 22m: Strong MHWs last on average ' + str(DurMean) + ' days and have a mean intensity of ' + str(IntMean.values) +
       ' degrees celsius. The average max and cumulative intensity is ' + str(IntMeanMax.values) + ' degrees celsius' + 
@@ -84,8 +87,10 @@ print('PH100 22m: Strong MHWs last on average ' + str(DurMean) + ' days and have
 # %% -----------------------------------------------------------
 # save sliced dataset as NetCDF and CSV
 
-saving_path = ('C:\\Users\\mphem\\OneDrive - UNSW\\Work\\Temperature_extremes\\' + 
-               'Temperature_extremes\\Scripts\\Tutorials\\Python\\')
+# local saving path (uncomment and modify)
+# saving_path = ['local_path_to_save_the_CSV']
+saving_path = ('C:\\Users\\mphem\\OneDrive - UNSW\\Work\\Temperature_extremes\\Temperature_extremes\\' + 
+                'Scripts\\Tutorials\\AMDOT-EXT-Tutorials\\Python\\')
 
 # saving NetCDF file
 data22mMHWStrong.to_netcdf(saving_path + 'PH100_strong_MHWs_22m.nc')
