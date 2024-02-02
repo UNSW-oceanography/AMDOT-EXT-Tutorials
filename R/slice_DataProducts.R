@@ -103,7 +103,7 @@ IntMean = round(mean(data_22mMHWStrong$MHW_EVENT_INTENSITY_MEAN),1)
 DurMean = round(mean(data_22mMHWStrong$MHW_EVENT_DURATION),1)
 
 text1 <- paste('PH100 22m: Strong MHWs last on average ',as.character(DurMean),' days and have a mean intensity of ',
-             as.character(IntMean),' degrees celsius.')
+               as.character(IntMean),' degrees celsius.')
 text2 <- paste('The average max and cumulative intensity is ', as.character(IntMeanMax),' degrees celsius',
                ' and ',as.character(IntMeanCumulative),' degrees celsius days, respectively.')
 
@@ -120,4 +120,3 @@ saving_path = ('C:\\Users\\z3526971\\OneDrive - UNSW\\Work\\Temperature_extremes
 save(data_22mMHWStrong, file = paste(saving_path,'PH100_strong_MHWs_22m.rdata'))
 # export data as csv
 write.csv(data_22mMHWStrong, paste(saving_path,'PH100_strong_MHWs_22m.csv'))
-
