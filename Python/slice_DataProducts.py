@@ -13,7 +13,7 @@
 # % ####### Any and all use of the AMDOT-EXT data products or accompanying event summary CSV files described here must include ####### 
 # %
 # % – a citation to the data paper: "Exploring Multi-decadal Time Series of Temperature Extremes in Australian Coastal Waters: Hemming et al., (2024). 
-# %    Earth System Science Data. https://doi.org/10.5194/essd-2023-252."
+# %    Earth System Science Data."
 # %
 # % – a reference to the data citation as written in the NetCDF file attributes and as follows: Hemming, MP. et al. (2023) "Australian Multi-decadal Ocean Time Series 
 # %    EXTreme (AMDOT-EXT) Data Products", Australian Ocean Data Network, https://doi.org/10.26198/wbc7-8h24."
