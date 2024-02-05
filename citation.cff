@@ -6,7 +6,6 @@ authors:
   - family-names: Hemming
     given-names: Michael Paul
     orcid: "https://orcid.org/0000-0002-3743-4836"
-version: 0.11.2
 date-released: "To complete"
 identifiers:
   - description: Code demonstrating how to load the Australian Multi-decadal Ocean Time series EXTreme (AMDOT-EXT) data products, use the NetCDF variables, produce plots, and export the data as CSV files.
