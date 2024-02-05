@@ -27,13 +27,24 @@ This work is licensed under a
 
 This script demonstrates how to:
 
-* Load in the Maria Island AMDOT-EXT data product directly from the AODN thredds server using OPenDAP
-* Extract variables and convert time
+* Load in the Maria Island 90m AMDOT-EXT data product directly from the AODN thredds server using OPenDAP
+* Extract variables and convert time (MATLAB / R)
 * Select data during the longest surface marine heatwave and export as a CSV file
+
+### slice_DataProducts (MATLAB, Python, R)
+
+This script demonstrates how to:
+
+* Load in the Port Hacking 100m AMDOT-EXT data product directly from the AODN thredds server using OPenDAP
+* Extract variables at a depth of 22m when there are strong marine heatwaves only, and convert time (MATLAB / R)
+* Calculate average cumulative, max, and mean intensity during strong marine heatwaves, as well as mean duration (and print/display this information)
+* save the sliced data in various formats (CSV, mat - MATLAB, NetCDF - Python, rdata - R)
 
 ### Notes
 If using R/Python, you will need to install the required package/s. If using Python and are getting errors when running the code it could be that you are using different package versions. Please check the environment file ('AMDOT-EXT_py312.yml') for a list of package versions used for writing the tutorials. 
 
 If you wish to save the data files, you will need to modify 'saving_path' to include your chosen local directory.
+
+The MATLAB scripts require the 'load_netCDF.m' function to load in the file from AODN thredds via OPeNDAP.
 
 <br><br>
