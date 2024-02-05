@@ -93,5 +93,7 @@ data_longest <- data.frame(TIME = longest_times,
                            PER90_21m = longest_temp_90_21m)
 
 # export data as csv
+
+# modify and uncomment to save CSV
 # saving_path <- 'local\\path\\to\\save\\the\\CSV\\'
 # write.csv(data_longest, paste(saving_path,'MAI_TEMP_PER90_LongestMHW.csv'))

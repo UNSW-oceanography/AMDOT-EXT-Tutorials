@@ -80,7 +80,7 @@ for(i in 1:nvar) {
 
 
 # during strong MHWs
-c <- data_22m$MHW_EVENT_CAT == 2
+c <- which(data_22m$MHW_EVENT_CAT == 2)
 # select data during strong MHWs only
 # create dataframe 
 data_22mMHWStrong <- data.frame(TIME = TIME_R[c])
@@ -89,7 +89,6 @@ for(i in 1:nvar) {
   d = unlist(data_22m[varnames[i]])
   data_22mMHWStrong[varnames[i]] = c(d[c])
 }
-
 
 # %% -----------------------------------------------------------
 # calculate statistics and display
@@ -111,9 +110,10 @@ print(text2)
 # %% -----------------------------------------------------------
 # save sliced dataset as NetCDF and CSV
 
+# modify and uncomment to save CSV
 # saving_path <- 'local\\path\\to\\save\\the\\CSV\\'
 # 
-# # saving rdata file
-# save(data_22mMHWStrong, file = paste(saving_path,'PH100_strong_MHWs_22m.rdata'))
-# # export data as csv
-# write.csv(data_22mMHWStrong, paste(saving_path,'PH100_strong_MHWs_22m.csv'))
+# saving rdata file
+save(data_22mMHWStrong, file = paste(saving_path,'PH100_strong_MHWs_22m.rdata'))
+# export data as csv
+write.csv(data_22mMHWStrong, paste(saving_path,'PH100_strong_MHWs_22m.csv'))
