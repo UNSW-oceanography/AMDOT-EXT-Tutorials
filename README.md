@@ -3,14 +3,13 @@
 
 This repository contains python, MATLAB and R code as referenced in the following publication: 
 
-_Hemming, Michael P., et al. "Exploring Multi-decadal Time Series of Temperature Extremes in Australian Coastal Waters." Ocean Science (2024): {{page range}}. [https://doi.org/10.5194/egusphere-2022-1336]([https://doi.org/10.5194/essd-2023-252](https://doi.org/10.5194/egusphere-2022-1336))_
+_Hemming, Michael P., et al. "Exploring Multi-decadal Time Series of Temperature Extremes in Australian Coastal Waters." Earth System Science Data (2024)_
 
 [![CC BY 4.0][cc-by-shield]][cc-by]
 =======
 If you use this code please cite as written below: 
 
-Michael Hemming. (2023). UNSW-oceanography/AMDOT-EXT-Tutorials: v1.0.0.0 (v1.0.0.0). Zenodo. [![DOI](https://zenodo.org/badge/638034418.svg)](https://zenodo.org/badge/latestdoi/638034418)
-{{Need to update this}}
+Michael Hemming. (2023). UNSW-oceanography/AMDOT-EXT-Tutorials: v1.0.0.0 (v1.0.0.0). Zenodo. {{UPDATE DOI WHEN AVAILABLE}}
 
 This work is licensed under a
 [Creative Commons Attribution 4.0 International License][cc-by].
