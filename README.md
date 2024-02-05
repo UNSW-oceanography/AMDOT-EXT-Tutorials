@@ -21,5 +21,12 @@ This work is licensed under a
 [cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
 
+## Tutorials
+
+### get_DataProducts (MATLAB, Python, R)
+
+This script demonstrates how to:
+
+* Load in the Maria Island AMDOT-EXT data product directly from the AODN thredds server using OPenDAP
 
 <br><br>
