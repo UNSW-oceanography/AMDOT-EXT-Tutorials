@@ -67,7 +67,7 @@ TIME_R <- as.POSIXct((as.numeric(unlist(TIME)) - 7305)*86400, origin = "1970-01-
 # 22 m
 # create dataframe including TIME
 data_22m <- data.frame(TIME = TIME_R)
-# add all other variables at the surface only
+# add all other variables
 for(i in 1:nvar) {
   data_22m[varnames[i]] = c(ncvar_get(data, varnames[i],start=c(2,1),count=c(1,data$dim$TIME$len)))
 }
