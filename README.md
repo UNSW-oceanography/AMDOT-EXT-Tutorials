@@ -28,5 +28,12 @@ This work is licensed under a
 This script demonstrates how to:
 
 * Load in the Maria Island AMDOT-EXT data product directly from the AODN thredds server using OPenDAP
+* Extract variables and convert time
+* Select data during the longest surface marine heatwave and export as a CSV file
+
+### Notes
+If using R/Python, you will need to install the required package/s. If using Python and are getting errors when running the code it could be that you are using different package versions. Please check the environment file ('AMDOT-EXT_py312.yml') for a list of package versions used for writing the tutorials. 
+
+If you wish to save the data files, you will need to modify 'saving_path' to include your chosen local directory.
 
 <br><br>
