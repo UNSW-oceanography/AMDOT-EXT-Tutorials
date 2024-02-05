@@ -2,7 +2,7 @@
 % 
 % ####################################################################
 % 
-% Script: get_DataProducts.py
+% Script: get_DataProducts.m
 % Description: Tutorial on how to download and load the AMDOT-EXT data products
 % Created: 28 Nov 2022 by Michael Hemming (NSW-IMOS)
 % 
@@ -18,7 +18,7 @@
 % – a reference to the data citation as written in the NetCDF file attributes and as follows: Hemming, MP. et al. (2023) "Australian Multi-decadal Ocean Time Series 
 %    EXTreme (AMDOT-EXT) Data Products", Australian Ocean Data Network, https://doi.org/10.26198/wbc7-8h24."
 %
-% – the following acknowledgement statement: Data were sourced from Australia’s Integrated Marine Observing System280
+% – the following acknowledgement statement: Data were sourced from Australia’s Integrated Marine Observing System
 % (IMOS) - IMOS is enabled by the National Collaborative Research Infrastructure Strategy (NCRIS).
 %
 % ######################################################################################################################
@@ -44,15 +44,21 @@ data = load_netCDF(url,1)
 % (Longest surface marine heatwave)
 
 % get times of the longest surface marine heatwave 
+% select surface MHWs
 SurfMHWs = data.TEMP_EXTREME_INDEX(1,:) == 12;
+% select surface MHW duration
 SurfDuration = data.MHW_EVENT_DURATION(1,:); 
+% determine longest surface MHW
 LongestDuration = nanmax(SurfDuration(SurfMHWs));
+% get logical to select longest surface MHW
 LongestSelection = SurfDuration == LongestDuration;
+% select times during the longest surface MHW
 LongestTimes = data.TIME(LongestSelection);
 
 % Select temperature and the 90th percentiles during the longest surface marine heatwave
+% this logical is used to select the same timestamps at both 2m and 21m depth
 c = data.TIME >= min(LongestTimes) & data.TIME <= max(LongestTimes);
-
+% data selection
 % time
 data_selection.TIME = datestr(data.TIME(c),'yyyy-mm-dd');
 % temperature

@@ -19,7 +19,7 @@
 # % – a reference to the data citation as written in the NetCDF file attributes and as follows: Hemming, MP. et al. (2023) "Australian Multi-decadal Ocean Time Series 
 # %    EXTreme (AMDOT-EXT) Data Products", Australian Ocean Data Network, https://doi.org/10.26198/wbc7-8h24."
 # %
-# % – the following acknowledgement statement: Data were sourced from Australia’s Integrated Marine Observing System280
+# % – the following acknowledgement statement: Data were sourced from Australia’s Integrated Marine Observing System
 # % (IMOS) - IMOS is enabled by the National Collaborative Research Infrastructure Strategy (NCRIS).
 # %
 
@@ -35,7 +35,7 @@ import pandas as pd
 import numpy as np
 
 # If you do not currently have these packages installed, please use either
-# 'conda install <package>' or 'pip install <package>'
+# 'conda install package_name' or 'pip install package_name'
 
 # %% -----------------------------------------------------------
 # Download the data products
@@ -49,8 +49,6 @@ import numpy as np
 # load the data products
 
 # We will use the Maria Island data product in this example
-filename = ('C:\\Users\\mphem\\OneDrive - UNSW\\Work\\Temperature_extremes\\Temperature_extremes\\Data\\Finalised_data\\' + 
-            'V1\\FilesAODNupload\\ManuscriptVersion_2022\\' + 'MAI090_TEMP_EXTREMES_1944-2022_v1.nc')
 
 filename = ('https://thredds.aodn.org.au/thredds/dodsC/UNSW/NRS_extremes/Temperature_DataProducts/' + 
             'MAI090/MAI090_TEMP_EXTREMES_1944-2022_v1.nc')
@@ -61,10 +59,15 @@ data = xr.open_dataset(filename)
 # % (Longest surface marine heatwave)
 
 # get times of the longest surface marine heatwave 
+# select surface MHWs
 SurfMHWs = data['TEMP_EXTREME_INDEX'][:,0].values == 12;
+# select surface MHW duration
 SurfDuration = data['MHW_EVENT_DURATION'][:,0].values; 
+# determine longest surface MHW
 LongestDuration = np.nanmax(SurfDuration[SurfMHWs]);
+# get boolean to select longest surface MHW
 LongestSelection = SurfDuration == LongestDuration;
+# select times during the longest surface MHW
 LongestTimes = data['TIME'][LongestSelection];
 
 # Select temperature and the 90th percentiles during marine heatwave
@@ -88,10 +91,6 @@ data2save = pd.merge(TEMP_selection,PER90_selection,left_on='TIME',right_on='TIM
 # export data as csv
 # local saving path (uncomment and modify)
 # saving_path = ['local_path_to_save_the_CSV']
-saving_path = ('C:\\Users\\mphem\\OneDrive - UNSW\\Work\\Temperature_extremes\\Temperature_extremes\\' + 
-                'Scripts\\Tutorials\\AMDOT-EXT-Tutorials\\Python\\')
 
 data2save.to_csv(saving_path + 'MAI_TEMP_PER90_LongestMHW.csv')
-
-
 
