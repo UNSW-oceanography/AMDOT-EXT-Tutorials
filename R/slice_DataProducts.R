@@ -7,14 +7,21 @@
 #              and slice data using event characteristics
 # Created: 29 Nov 2022 by Michael Hemming (NSW-IMOS)
 # 
-# using R version 3.6.1 (2019-07-05), RStudio interface
+# using R version 3.6.3 (2020-02-29), RStudio interface
 # 
 # ######################################################################################################################
 # 
-# ####### Please cite the accompanying data set paper if you use the AMDOT-EXT data products #######
-# 
-# # ADD CITATION HERE
-# 
+# ####### Any and all use of the AMDOT-EXT data products or accompanying event summary CSV files described here must include ####### 
+#
+# – a citation to the data paper: "Exploring Multi-decadal Time Series of Temperature Extremes in Australian Coastal Waters: Hemming et al., (2024). 
+#    Earth System Science Data."
+#
+# – a reference to the data citation as written in the NetCDF file attributes and as follows: Hemming, MP. et al. (2023) "Australian Multi-decadal Ocean Time Series 
+#    EXTreme (AMDOT-EXT) Data Products", Australian Ocean Data Network, https://doi.org/10.26198/wbc7-8h24."
+#
+# – the following acknowledgement statement: Data were sourced from Australia’s Integrated Marine Observing System280
+# (IMOS) - IMOS is enabled by the National Collaborative Research Infrastructure Strategy (NCRIS).
+#
 # ######################################################################################################################
 # 
 # ##################################
@@ -30,7 +37,7 @@ library(ncdf4)
 # Download the data products
 
 # The netCDF files are available for download here:
-# http://thredds.aodn.org.au/thredds/catalog/UNSW/UPDATE_HERE_WHEN_READY/catalog.html
+# https://thredds.aodn.org.au/thredds/catalog/UNSW/NRS_extremes/catalog.html
 
 # However, here we will load the file directly using OPeNDAP.
 
@@ -38,25 +45,16 @@ library(ncdf4)
 
 ## -----------------------------------------------------------
 # load the data products
-
 # We will use the Port Hacking data product in this example
 
-path <- 'C:\\Users\\z3526971\\OneDrive - UNSW\\Work\\Temperature_extremes\\Temperature_extremes\\Scripts\\Tutorials\\R\\';
-
-# filename = 'http://thredds.aodn.org.au/thredds/catalog/UNSW/UPDATE_HERE_WHEN_READY/catalog.html'
-filename ='C:\\Users\\z3526971\\OneDrive - UNSW\\Work\\Temperature_extremes\\Temperature_extremes\\Data\\Finalised_data\\PH100_TEMP_EXTREMES_1953-2022_v1.nc'
-
-setwd(path)
+URL <- 'https://thredds.aodn.org.au/thredds/dodsC/UNSW/NRS_extremes/Temperature_DataProducts/PH100/PH100_TEMP_EXTREMES_1953-2022_v1.nc'
 
 # load file
-data <- nc_open(filename)
+data <- nc_open(URL)
 
 # get variable information
 nvar <-data$nvar
 varnames <- names(data[['var']])
-
-# -----------------------------------------------------------
-# select data at 22m depth when there are strong MHWs
 
 # get TIME and convert to R time
 TIME <- data$dim$TIME[10]
@@ -69,7 +67,6 @@ data_22m <- data.frame(TIME = TIME_R)
 for(i in 1:nvar) {
   data_22m[varnames[i]] = c(ncvar_get(data, varnames[i],start=c(2,1),count=c(1,data$dim$TIME$len)))
 }
-
 
 # MHWs
 #----------------------------------
@@ -97,10 +94,10 @@ for(i in 1:nvar) {
 # %% -----------------------------------------------------------
 # calculate statistics and display
 
-IntMeanCumulative = round(mean(data_22mMHWStrong$MHW_EVENT_INTENSITY_CUMULATIVE),1)
-IntMeanMax = round(mean(data_22mMHWStrong$MHW_EVENT_INTENSITY_MAX),1)
-IntMean = round(mean(data_22mMHWStrong$MHW_EVENT_INTENSITY_MEAN),1)
-DurMean = round(mean(data_22mMHWStrong$MHW_EVENT_DURATION),1)
+IntMeanCumulative = round(mean(data_22mMHWStrong$MHW_EVENT_INTENSITY_CUMULATIVE, na.rm = TRUE),1)
+IntMeanMax = round(mean(data_22mMHWStrong$MHW_EVENT_INTENSITY_MAX, na.rm = TRUE),1)
+IntMean = round(mean(data_22mMHWStrong$MHW_EVENT_INTENSITY_MEAN, na.rm = TRUE),1)
+DurMean = round(mean(data_22mMHWStrong$MHW_EVENT_DURATION, na.rm = TRUE),1)
 
 text1 <- paste('PH100 22m: Strong MHWs last on average ',as.character(DurMean),' days and have a mean intensity of ',
                as.character(IntMean),' degrees celsius.')
@@ -114,9 +111,9 @@ print(text2)
 # %% -----------------------------------------------------------
 # save sliced dataset as NetCDF and CSV
 
-saving_path = ('C:\\Users\\z3526971\\OneDrive - UNSW\\Work\\Temperature_extremes\\Temperature_extremes\\Scripts\\Tutorials\\R\\')
-
-# saving rdata file
-save(data_22mMHWStrong, file = paste(saving_path,'PH100_strong_MHWs_22m.rdata'))
-# export data as csv
-write.csv(data_22mMHWStrong, paste(saving_path,'PH100_strong_MHWs_22m.csv'))
+# saving_path <- 'local\\path\\to\\save\\the\\CSV\\'
+# 
+# # saving rdata file
+# save(data_22mMHWStrong, file = paste(saving_path,'PH100_strong_MHWs_22m.rdata'))
+# # export data as csv
+# write.csv(data_22mMHWStrong, paste(saving_path,'PH100_strong_MHWs_22m.csv'))
