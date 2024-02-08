@@ -3,7 +3,8 @@
 ####################################################################
 
 # Script: get_DataProducts.py
-# Description: Tutorial on how to download and load the AMDOT-EXT data products
+# Description: Tutorial on how to load an AMDOT-EXT data product using
+#              OPeNDAP, and export data as a CSV file
 # Created: 28 Nov 2022 by Michael Hemming (NSW-IMOS)
 
 # using Python version 3.12, Spyder (managed using Anaconda)
@@ -13,11 +14,10 @@
 
 # % ####### Any and all use of the AMDOT-EXT data products or accompanying event summary CSV files described here must include ####### 
 # %
-# % – a citation to the data paper: "Exploring Multi-decadal Time Series of Temperature Extremes in Australian Coastal Waters: Hemming et al., (2024). 
+# % – a citation to the data paper: " Hemming et al., (2024). Exploring Multi-decadal Time Series of Temperature Extremes in Australian Coastal Waters, 
 # %    Earth System Science Data."
 # %
-# % – a reference to the data citation as written in the NetCDF file attributes and as follows: Hemming, MP. et al. (2023) "Australian Multi-decadal Ocean Time Series 
-# %    EXTreme (AMDOT-EXT) Data Products", Australian Ocean Data Network, https://doi.org/10.26198/wbc7-8h24."
+# % – a reference to the data citation as written in the NetCDF file attributes
 # %
 # % – the following acknowledgement statement: Data were sourced from Australia’s Integrated Marine Observing System
 # % (IMOS) - IMOS is enabled by the National Collaborative Research Infrastructure Strategy (NCRIS).
