@@ -1,5 +1,5 @@
 # AMDOT-EXT Data Product Code Tutorials
-### Code demonstrating how to load the Australian Multi-decadal Ocean Time series EXTreme (AMDOT-EXT) data products, use the NetCDF variables, produce plots, and export the data as CSV files.
+### Code demonstrating how to load the Australian Multi-decadal Ocean Time series EXTreme (AMDOT-EXT) data products, use the NetCDF variables, and export the data as CSV files.
 
 This repository contains python, MATLAB and R code as referenced in the following publication: 
 
