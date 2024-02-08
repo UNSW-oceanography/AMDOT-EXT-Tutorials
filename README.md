@@ -11,6 +11,9 @@ Code provided here was developed by Michael Hemming as part of a project funded 
 [![CC BY 4.0][cc-by-shield]][cc-by]
 =======
 
+Michael Hemming. (2024). UNSW-oceanography/AMDOT-EXT-Tutorials: Version 1 of the AMDOT-EXT code tutorials (Version V1). Zenodo. https://doi.org/10.5281/zenodo.10633427
+![image](https://github.com/UNSW-oceanography/AMDOT-EXT-Tutorials/assets/18735092/1134b62c-7e04-4c8b-91f7-20e47cc2a5c1)
+
 This work is licensed under a
 [Creative Commons Attribution 4.0 International License][cc-by].
 
@@ -19,9 +22,6 @@ This work is licensed under a
 [cc-by]: http://creativecommons.org/licenses/by/4.0/
 [cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
-
-![image](https://github.com/UNSW-oceanography/AMDOT-EXT-Tutorials/assets/18735092/1134b62c-7e04-4c8b-91f7-20e47cc2a5c1)
-
 
 # Tutorials
 
