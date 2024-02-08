@@ -5,6 +5,8 @@ This repository contains python, MATLAB and R code as referenced in the followin
 
 _Hemming, Michael P., et al. "Exploring Multi-decadal Time Series of Temperature Extremes in Australian Coastal Waters." Earth System Science Data (2024)_
 
+Code provided here was developed by Michael Hemming as part of a project funded by the University of New South Wales (UNSW). Code is provided "as is" without any warranty as to fitness for a particular purpose under a Creative Commons 4.0 license (http://creativecommons.org/licenses/by/4.0/)
+
 [![CC BY 4.0][cc-by-shield]][cc-by]
 =======
 If you use this code please cite as written below: 
